@@ -1,6 +1,7 @@
 /data/
 /.cache-task1/
 /.venv-task1/
+/.venv-tts/
 /submission/
 /reports/
 __pycache__/

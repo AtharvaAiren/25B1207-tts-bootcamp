@@ -33,6 +33,8 @@
   "_planned_task3": {
     "status": "plan only; no Task 3 audio submitted",
     "builds_on_task2": true,
+    "midterm_form_submitted": true,
+    "preserve_idea_parts_1_to_3": true,
     "control": "Set task3.builds_on_task2 to true when submitting Task 3 audio and predictions/val_control/."
   },
   "_help": {

@@ -75,7 +75,52 @@ Evidence is in `reports/task2/rules_frozen.json` and `validation_text_checks.csv
 
 ## Task 2: audio run (prepared, not executed locally)
 
-The local Mac has no CUDA GPU and Task 1's environment does not include IndicF5. Use a free Colab T4 or Kaggle GPU and the notebook `code/task2_run.ipynb`. Put the original kit and these participant files together in one folder, including `reports/task2/rules_frozen.json` from the working project or its packaged copy at `code/task2_evidence/rules_frozen.json`. The runner restores and verifies the packaged fingerprint when needed. Select the folder as `KIT` and accept the gated IndicF5 model terms. Supply a read-only Hugging Face token through Colab Secrets (`HF_TOKEN`) or the notebook's hidden prompt; never put a token in code, logs or the repository.
+The participant will run the audio stages on their lab GPU. The midterm form has been submitted; parts (1)–(3) of `idea.md` are frozen. The same GPU transfer bundle and command-line runner work on a lab server without Colab or Google Drive.
+
+### Lab GPU terminal workflow
+
+Transfer only `25B1207_tts_gpu_input.zip` from the Mac to the server; it contains the original kit plus current participant work (about 9.3 MB), without weights, caches or the Mac environment. Replace the example host/directory with your own:
+
+```bash
+# On the Mac, from the project folder:
+scp 25B1207_tts_gpu_input.zip YOUR_USER@YOUR_SERVER:/YOUR_WORK_DIRECTORY/
+
+# On the server, inside that work directory:
+mkdir -p tts_bootcamp
+unzip 25B1207_tts_gpu_input.zip -d tts_bootcamp
+cd tts_bootcamp
+python3 code/server_preflight.py
+```
+
+Extract the input bundle into a new folder. After an experiment, rerun the CLI in that existing folder; do not extract the starter bundle over measured results. `server_preflight.py` prints the Python/PyTorch versions, GPU model, driver and whether CUDA is available to Python. It downloads nothing and prints no credentials. Run in the GPU allocation your lab provides, rather than assuming a login shell has GPU access.
+
+The reported lab setup is Python 3.12.3, NVIDIA RTX PRO 4500 Blackwell (32 GB), driver 580.178.04, with no Torch installation. `setup_lab_gpu.sh` creates `.venv-tts` and installs matching Torch/TorchAudio 2.7.1 and TorchVision 0.22.1 from the official CUDA 12.8 wheel index. PyTorch 2.7 introduced Blackwell support in that build. [Official release](https://pytorch.org/blog/pytorch-2-7/), [installation commands](https://pytorch.org/get-started/previous-versions/).
+
+The original kit's install file has two problems: its GitHub source revision is actually the Hugging Face model revision (the GitHub API returns “No commit found”), and its NumPy>=2.1 requirement conflicts with the official source's NumPy<=1.26.4. The supplied files are preserved. Our separate `requirements_gpu_server.txt` uses verified GitHub source revision `13f7c4d627cc10111aea8fe9c0039462cacacdc7`, NumPy 1.26.4 and compatible dependency pins on Python 3.10–3.12. [Official source dependency declaration](https://github.com/ai4bharat/IndicF5/blob/13f7c4d627cc10111aea8fe9c0039462cacacdc7/setup.py).
+
+This is an installation repair. The model revision in `baseline/config.yaml` remains `fb652a96e508091045890dae5bb99fe511facbcf`; the original wrapper, length patch, prompts and decoding settings are unchanged. The repaired package list resolved successfully in a local Python 3.12 pip dry run; actual CUDA imports and synthesis must still be checked on the lab machine.
+
+On the server, from the extracted project folder:
+
+```bash
+bash code/setup_lab_gpu.sh
+source .venv-tts/bin/activate
+python -c 'from huggingface_hub import login; login(add_to_git_credential=False)'
+python code/run_task2.py --stage val
+```
+
+Accept the IndicF5 model terms on Hugging Face before login, and paste a read-access token into its hidden prompt. Never place it in a script or shell command. Setup verifies a CUDA calculation, the supplied F5 length patch and the synthesis/scoring imports without loading model weights. The runner also verifies gated model-config access before downloading scoring weights. Its Python module cache stays at the location required by the kit's patcher; weight downloads can use a separate `HF_HUB_CACHE`. Review `reports/task2/comparison.json` and the validation clips, then continue:
+
+```bash
+python code/run_task2.py --stage eval
+python code/run_task2.py --stage package
+```
+
+Bring back `25B1207_tts_bootcamp.zip` after the run. It holds the completed predictions, actual `results.json` and scoring evidence without model weights or kit data. Keep the server's working folder for Task 3 controls and later timing; model downloads are reused. The lab commands above are prepared instructions, not a claim that server synthesis has been executed.
+
+### Optional Colab/Kaggle workflow
+
+The local Mac has no CUDA GPU and Task 1's environment does not include IndicF5. `code/task2_run.ipynb` is an optional notebook interface for a Python 3.10–3.12 GPU runtime compatible with the CUDA 12.8 wheels. It stops on Python 3.13 instead of attempting the incompatible NumPy installation. Put the original kit and these participant files together in one folder, including `reports/task2/rules_frozen.json` from the working project or its packaged copy at `code/task2_evidence/rules_frozen.json`. The runner restores and verifies the packaged fingerprint when needed. Select the folder as `KIT` and accept the gated IndicF5 model terms. Supply a read-only Hugging Face token through Colab Secrets (`HF_TOKEN`) or the notebook's hidden prompt; never put a token in code, logs or the repository.
 
 For an easier transfer, these local commands create a separate GPU input bundle:
 
@@ -86,10 +131,9 @@ For an easier transfer, these local commands create a separate GPU input bundle:
 
 Upload `25B1207_tts_gpu_input.zip` to the top level of your own Google Drive (`MyDrive`). The notebook extracts it into `MyDrive/25B1207_tts_gpu_input` only if that folder does not exist, so later sessions retain your generated audio and results. For Kaggle, extract/copy it to your writable `KIT` folder. This convenience ZIP includes the original kit data; **it is not the submission ZIP and must not be pushed to the public repository**. Neither ZIP contains downloaded model weights or the virtual environment. The submission builder includes only the prescribed submission files.
 
-The notebook installs the organizer's pinned dependencies. Restart the runtime if installation changes NumPy and then continue from the authentication/check cell. The following are the prepared reproduction commands for the audio stage; no GPU measurements are claimed until they have actually completed:
+The notebook uses the repaired dependency file described above. Restart the runtime if installation changes NumPy and then continue from the authentication/check cell. The following are the prepared reproduction commands once the GPU environment has been installed; no GPU measurements are claimed until they have actually completed:
 
 ```bash
-python -m pip install -r baseline/requirements.txt
 python code/run_task2.py --stage val
 python code/run_task2.py --stage eval
 python code/run_task2.py --stage package
@@ -101,6 +145,6 @@ Review validation scores and the two validation playback examples. If needed, de
 
 `--stage eval` generates exactly 40 Task 2 evaluation WAVs with normalization only. It displays no evaluation text and provides no evaluation playback. Audio is checked in a staging folder before moving it into predictions; previous complete audio is preserved outside the submission. Never choose or tune using evaluation listening. `--stage package` rebuilds the same ZIP name and runs the format checker. GPU evidence is archived under `code/task2_evidence/`; staging and backup audio are excluded.
 
-Task 3 has not run. Its existing idea card parts (1)–(3) remain unchanged; verify that they were submitted to the midterm form before any Task 3 experiment. Its normalization-only control will be the Task 2 validation audio. Task 4 is an optional later step. `report.md` and idea-card part (4) require actual experiment results and the participant's own wording.
+Task 3 has not run. The participant confirmed the existing idea card parts (1)–(3) were submitted to the midterm form; they remain unchanged. Its normalization-only control will be the Task 2 validation audio. Task 4 is an optional later step. `report.md` and idea-card part (4) require actual experiment results and the participant's own wording.
 
 AI assistance: OpenAI Codex assisted with environment setup, reproduction commands, listening notebook preparation, recording the participant's supplied labels, Task 2 normalization and checks, the GPU workflow, and submission packaging. Error observations are the participant's listening judgments. Idea-card and report wording must be the participant's own.

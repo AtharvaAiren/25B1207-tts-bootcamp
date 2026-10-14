@@ -1,6 +1,6 @@
 """Prepare a local-only GPU input ZIP: kit + participant work, no weights/caches.
 
-This is a convenience transfer file for your own Colab/Kaggle runtime. It is
+This is a convenience transfer file for your own lab GPU/Colab/Kaggle runtime. It is
 not the submission ZIP and must not be pushed to the public repository,
 because it contains the organizer's data folder.
 """
@@ -42,7 +42,7 @@ def main():
         for name, data in sorted(files.items()):
             target.writestr(name, data)
     print(f"GPU input bundle: {output.name} ({output.stat().st_size / 1e6:.2f} MB; {len(files)} files)")
-    print("Upload this to your own Drive/Kaggle workspace. It includes kit data and is excluded from public GitHub.")
+    print("Transfer this to your lab GPU or own Drive/Kaggle workspace. It includes kit data and is excluded from public GitHub.")
 
 
 if __name__ == "__main__":

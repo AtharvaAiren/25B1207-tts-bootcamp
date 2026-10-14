@@ -1,0 +1,21 @@
+# Python 3.10–3.12; use 3.12 on the lab server.
+# Install the matching CUDA-enabled PyTorch wheels before this file.
+# The GitHub package revision is separate from the Hugging Face model revision.
+git+https://github.com/ai4bharat/IndicF5.git@13f7c4d627cc10111aea8fe9c0039462cacacdc7
+torch==2.7.1
+torchaudio==2.7.1
+torchvision==0.22.1
+numpy==1.26.4
+transformers==4.49.0
+huggingface-hub==0.29.3
+accelerate==1.15.0
+soundfile==0.14.0
+librosa==0.11.0
+pyyaml==6.0.3
+pandas==2.2.3
+speechbrain==1.0.3
+datasets==3.3.2
+cached-path==1.7.3
+ema-pytorch==0.5.2
+x-transformers==1.31.14
+vocos==0.1.0

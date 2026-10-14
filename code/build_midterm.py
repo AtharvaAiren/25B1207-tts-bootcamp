@@ -78,7 +78,7 @@ def main():
             files[name] = source.read_bytes()
 
     files[".gitignore"] = (
-        "/data/\n/.cache-task1/\n/.venv-task1/\n/submission/\n/reports/\n"
+        "/data/\n/.cache-task1/\n/.venv-task1/\n/.venv-tts/\n/submission/\n/reports/\n"
         "__pycache__/\n*.pyc\n.DS_Store\n*.zip\n*.pt\n*.pth\n*.ckpt\n*.safetensors\n*.bin\n"
     ).encode("utf-8")
     status = "Included in idea.md." if "idea.md" in files else "Pending the participant's parts (1)–(3)."

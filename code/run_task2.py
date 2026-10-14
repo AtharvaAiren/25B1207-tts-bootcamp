@@ -1,4 +1,4 @@
-"""Run Task 2 on a free GPU; use --stage val, eval, or package.
+"""Run Task 2 on your GPU; use --stage val, eval, or package.
 
 No Task 3 experiment is run. Generated audio is checked in a staging folder
 before it is moved into the submission's predictions folder. Model settings,
@@ -139,7 +139,9 @@ def synthesize_split(split, folder, seed):
 def require_gpu():
     import torch
     if not torch.cuda.is_available():
-        raise RuntimeError("No CUDA GPU is available. In Colab choose Runtime > Change runtime type > T4 GPU; in Kaggle enable GPU.")
+        raise RuntimeError("No CUDA GPU is available to this Python environment. On a lab server, use an allocated NVIDIA GPU and CUDA-enabled PyTorch. In Colab/Kaggle, enable a GPU runtime.")
+    matrix = torch.ones((4, 4), device="cuda")
+    (matrix @ matrix).sum().item()
     packages = {dist.metadata["Name"]: dist.version for dist in importlib.metadata.distributions() if dist.metadata.get("Name")}
     environment = {"python": sys.version.split()[0], "gpu": torch.cuda.get_device_name(0),
                    "packages": dict(sorted(packages.items())),
@@ -147,11 +149,24 @@ def require_gpu():
     (EVIDENCE / "environment.json").write_text(json.dumps(environment, indent=2) + "\n", encoding="utf-8")
 
 
+def require_model_access():
+    import yaml
+    from huggingface_hub import hf_hub_download
+    config = yaml.safe_load((KIT / "baseline" / "config.yaml").read_text(encoding="utf-8"))
+    try:
+        hf_hub_download(repo_id=config["repo"], revision=config["revision"], filename="config.json")
+    except Exception:
+        raise RuntimeError("IndicF5 access failed. Accept its Hugging Face terms, log in with a read token, and check network access.") from None
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--stage", choices=("val", "eval", "package"), required=True)
     arguments = parser.parse_args()
     os.chdir(KIT)
+    # Preserve the organizer's hard-coded module patch location even when the
+    # lab stores large model weights in a different HF_HOME/HF_HUB_CACHE.
+    os.environ["HF_MODULES_CACHE"] = str(Path.home() / ".cache" / "huggingface" / "modules")
     EVIDENCE.mkdir(parents=True, exist_ok=True)
     if arguments.stage == "package":
         run_logged(["code/build_midterm.py"], "package")
@@ -160,6 +175,7 @@ def main():
         return
     frozen = check_frozen_text()
     require_gpu()
+    require_model_access()
     seed = json.loads((KIT / "results.json").read_text(encoding="utf-8"))["seed"]
     if arguments.stage == "val":
         run_logged(["metrics.py", "data/baseline_val", "--json", "reports/task2/baseline_scores.json",
