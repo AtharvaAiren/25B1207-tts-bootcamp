@@ -12,9 +12,9 @@
     "val_cer_hard": null
   },
   "task3": {
-    "method_name": "",
-    "targeted_failure": "",
-    "targeted_category": "",
+    "method_name": "Context-sensitive English sound-spelling rules",
+    "targeted_failure": "english_word_error",
+    "targeted_category": "hinglish",
     "builds_on_task2": false,
     "settings": {},
     "val_cer": null,

@@ -4,6 +4,6 @@ Task 1: 24 supplied baseline recordings scored; CER 0.2426, SIM 0.8303, zero fai
 
 Reproduction commands and AI-assistance disclosure: [code/README.md](code/README.md). Scoring and listening evidence: [code/task1_evidence/](code/task1_evidence/).
 
-Idea card: Pending the participant's parts (1)–(3).
+Idea card: Included in idea.md.
 
 Task 2 is not completed, so no generated evaluation audio is submitted yet. The original organizer kit is a local prerequisite for reproduction; its data and model weights are excluded from this repository.

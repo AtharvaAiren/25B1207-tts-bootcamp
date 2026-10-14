@@ -1,0 +1,5 @@
+(1) I target english_word_error in val_hg_01 and val_hg_06. It couldn't properly speak English words in the middle of a Hindi sentence and ended up speaking something super random.
+
+(2) My hypothesis is that Hindi sound spellings will be easier for IndicF5 to pronounce. I will use handwritten rules that turn English spelling into Hindi sound spellings, including for words not seen before. We can define corresponding Hindi letters for combinations of English letters which occur together, kind of like token mapping. Longer combinations will be matched first, with context-sensitive rules for silent letters and vowel patterns rather than just memorizing whole words. I will develop rules from validation items only and keep model weights and baseline decoding fixed.
+
+(3) I predict about a 10% relative reduction in Hinglish CER, from 0.302 to roughly 0.272, while preserving speaker similarity. Silent letters and different pronunciations of the same letter combinations could make rules fail. Different accents could also make consistent sound spellings difficult.
