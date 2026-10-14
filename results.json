@@ -12,10 +12,10 @@
     "val_cer_hard": null
   },
   "task3": {
-    "method_name": "Context-sensitive English sound-spelling rules",
+    "method_name": "Contextual pronunciation rules with syllable-based timing",
     "targeted_failure": "english_word_error",
     "targeted_category": "hinglish",
-    "builds_on_task2": false,
+    "builds_on_task2": null,
     "settings": {},
     "val_cer": null,
     "val_sim": null,
@@ -29,6 +29,11 @@
     "baseline_seconds": null,
     "fast_seconds": null,
     "speedup": null
+  },
+  "_planned_task3": {
+    "status": "plan only; no Task 3 audio submitted",
+    "builds_on_task2": true,
+    "control": "Set task3.builds_on_task2 to true when submitting Task 3 audio and predictions/val_control/."
   },
   "_help": {
     "numbers": "All CER/SIM values are what metrics.py prints on the validation audio you submit. Leave null for tasks you skip.",

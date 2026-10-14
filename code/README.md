@@ -43,6 +43,8 @@ This also fills the notebook's label cell and replaces the template machine desc
 
 ## Submission check
 
+The planned Task 3 method combines contextual English pronunciation rewriting with syllable-based generation timing after Task 2 normalization. The experiment will compare normalization alone, rewriting alone, timing alone, and their combination using the same validation items, prompts, and seeds. No Task 3 experiment has been run; all performance fields remain null. `results.json` records the planned dependency as `_planned_task3.builds_on_task2: true`; the unrun result field `task3.builds_on_task2` remains null at midterm because the checker otherwise requires control audio immediately. Set that result field to true when submitting Task 3 audio, together with the required normalization-only `predictions/val_control/`. The midterm idea card is the root `idea.md`; copy its parts (1)–(3) exactly into the form and leave them unchanged after submission.
+
 ```bash
 .venv-task1/bin/python code/build_midterm.py
 .venv-task1/bin/python check_format.py 25B1207_tts_bootcamp.zip
