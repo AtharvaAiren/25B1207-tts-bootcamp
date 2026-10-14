@@ -1,0 +1,39 @@
+{
+  "roll_no": "25B1207",
+  "machine": "macOS-15.7.4-arm64-arm-64bit, CPU (Task 1 scoring)",
+  "seed": 0,
+  "task1": {
+    "val_cer": 0.2426,
+    "val_sim": 0.8303
+  },
+  "task2": {
+    "val_cer": null,
+    "val_sim": null,
+    "val_cer_hard": null
+  },
+  "task3": {
+    "method_name": "",
+    "targeted_failure": "",
+    "targeted_category": "",
+    "builds_on_task2": false,
+    "settings": {},
+    "val_cer": null,
+    "val_sim": null,
+    "val_cer_targeted": null,
+    "val_control_cer": null
+  },
+  "task4": {
+    "method_name": "",
+    "settings": {},
+    "val_cer": null,
+    "baseline_seconds": null,
+    "fast_seconds": null,
+    "speedup": null
+  },
+  "_help": {
+    "numbers": "All CER/SIM values are what metrics.py prints on the validation audio you submit. Leave null for tasks you skip.",
+    "targeted_failure": "One of: skipped_words, repeated_words, number_error, english_word_error, speaker_mismatch, other",
+    "targeted_category": "The item category your Task 3 score is computed on: hindi, hinglish, hard or long",
+    "speedup": "baseline_seconds / fast_seconds, from run_baseline.py timing files made on the same machine in the same session"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "python": "3.12.11 (main, Jun  3 2025, 15:41:47) [Clang 17.0.0 (clang-1700.0.13.3)]",
+  "platform": "macOS-15.7.4-arm64-arm-64bit",
+  "packages": {
+    "numpy": "2.2.6",
+    "torch": "2.5.1",
+    "torchaudio": "2.5.1",
+    "transformers": "4.49.0",
+    "speechbrain": "1.0.3",
+    "librosa": "0.11.0",
+    "soundfile": "0.14.0",
+    "huggingface-hub": "0.29.3"
+  },
+  "model_revisions": {
+    "openai/whisper-large-v3-turbo": "41f01f3fe87f28c78e2fbf8b568835947dd65ed9",
+    "speechbrain/spkrec-ecapa-voxceleb": "0f99f2d0ebe89ac095bcc5903c4dd8f72b367286"
+  },
+  "metrics_sha256": "3c3c9f3f9d21dafb8d372675dac8d9ffeb4db9f21e6d4971efb5701e85353137"
+}
