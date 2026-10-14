@@ -77,6 +77,15 @@ Evidence is in `reports/task2/rules_frozen.json` and `validation_text_checks.csv
 
 The local Mac has no CUDA GPU and Task 1's environment does not include IndicF5. Use a free Colab T4 or Kaggle GPU and the notebook `code/task2_run.ipynb`. Put the original kit and these participant files together in one folder, including `reports/task2/rules_frozen.json` from the working project or its packaged copy at `code/task2_evidence/rules_frozen.json`. The runner restores and verifies the packaged fingerprint when needed. Select the folder as `KIT` and accept the gated IndicF5 model terms. Supply a read-only Hugging Face token through Colab Secrets (`HF_TOKEN`) or the notebook's hidden prompt; never put a token in code, logs or the repository.
 
+For an easier transfer, these local commands create a separate GPU input bundle:
+
+```bash
+.venv-task1/bin/python code/build_midterm.py
+.venv-task1/bin/python code/prepare_gpu_bundle.py
+```
+
+Upload `25B1207_tts_gpu_input.zip` to the top level of your own Google Drive (`MyDrive`). The notebook extracts it into `MyDrive/25B1207_tts_gpu_input` only if that folder does not exist, so later sessions retain your generated audio and results. For Kaggle, extract/copy it to your writable `KIT` folder. This convenience ZIP includes the original kit data; **it is not the submission ZIP and must not be pushed to the public repository**. Neither ZIP contains downloaded model weights or the virtual environment. The submission builder includes only the prescribed submission files.
+
 The notebook installs the organizer's pinned dependencies. Restart the runtime if installation changes NumPy and then continue from the authentication/check cell. The following are the prepared reproduction commands for the audio stage; no GPU measurements are claimed until they have actually completed:
 
 ```bash
