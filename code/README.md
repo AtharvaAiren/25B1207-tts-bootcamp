@@ -100,6 +100,15 @@ The original kit's install file has two problems: its GitHub source revision is 
 
 This is an installation repair. The model revision in `baseline/config.yaml` remains `fb652a96e508091045890dae5bb99fe511facbcf`; the original wrapper, length patch, prompts and decoding settings are unchanged. The repaired package list resolved successfully in a local Python 3.12 pip dry run; actual CUDA imports and synthesis must still be checked on the lab machine.
 
+The participant's server subsequently passed the CUDA calculation with Torch 2.7.1+cu128. Its first import check exposed a transitive dependency issue: unpinned PyArrow 26 requires NumPy 2 at runtime despite pip reporting no broken requirements. PyArrow is now pinned to 19.0.1, compatible with the NumPy 1.26.4 used by IndicF5. A fresh isolated local environment installed the full repaired requirements and passed NumPy/Arrow array conversion plus F5-TTS, Transformers and SpeechBrain imports; no weights were loaded or synthesis performed. The lab runtime check must still be rerun. [Arrow 19 installation requirements](https://arrow.apache.org/docs/19.0/python/install.html). To repair an existing server environment, run the commands below before continuing to Hugging Face login and validation:
+
+```bash
+source .venv-tts/bin/activate
+python -m pip install numpy==1.26.4 pyarrow==19.0.1
+python -m pip check
+python code/server_preflight.py --check-runtime
+```
+
 On the server, from the extracted project folder:
 
 ```bash

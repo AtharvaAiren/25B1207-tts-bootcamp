@@ -15,6 +15,8 @@ pyyaml==6.0.3
 pandas==2.2.3
 speechbrain==1.0.3
 datasets==3.3.2
+# Arrow 26 requires NumPy 2 at import time; IndicF5 requires NumPy 1.26.
+pyarrow==19.0.1
 cached-path==1.7.3
 ema-pytorch==0.5.2
 x-transformers==1.31.14
