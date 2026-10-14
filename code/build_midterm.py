@@ -1,4 +1,4 @@
-"""Build the submission ZIP and extract its contents to an isolated GitHub checkout."""
+"""Build the current submission ZIP and extract it to an isolated GitHub checkout."""
 
 import json
 import zipfile
@@ -37,6 +37,31 @@ def add_tree(files, source, target):
         files[(target / relative).as_posix()] = data
 
 
+def add_task2_evidence(files):
+    # Include small, checkable measurements and the rule fingerprint. Staged or
+    # backed-up generated audio must not be duplicated inside code/.
+    evidence = KIT / "reports" / "task2"
+    if not evidence.exists():
+        return
+    allowed = {
+        "rules_frozen.json", "validation_text_checks.csv", "environment.json",
+        "baseline_scores.json", "baseline_scores.csv", "val_scores.json", "val_scores.csv",
+        "comparison.json", "val_control_timing.json", "t2_norm_timing.json",
+        "score_baseline.log", "synthesize_val_control.log", "score_val_control.log",
+        "record_results.log", "synthesize_t2_norm.log",
+    }
+    for name in sorted(allowed):
+        path = evidence / name
+        if not path.is_file() or path.is_symlink():
+            continue
+        data = path.read_bytes()
+        if path.suffix == ".log":
+            text = data.decode("utf-8")
+            text = text.replace(str(KIT.resolve()), "<PROJECT>").replace(str(Path.home()), "<USER_HOME>")
+            data = text.encode("utf-8")
+        files[f"code/task2_evidence/{name}"] = data
+
+
 def main():
     results = json.loads((KIT / "results.json").read_text(encoding="utf-8"))
     roll_no = results["roll_no"]
@@ -45,6 +70,7 @@ def main():
     files = {}
     add_tree(files, KIT / "code", Path("code"))
     add_tree(files, KIT / "reports" / "task1", Path("code") / "task1_evidence")
+    add_task2_evidence(files)
     add_tree(files, KIT / "predictions", Path("predictions"))
     for name in ("results.json", "idea.md", "report.md"):
         source = KIT / name
@@ -56,15 +82,29 @@ def main():
         "__pycache__/\n*.pyc\n.DS_Store\n*.zip\n*.pt\n*.pth\n*.ckpt\n*.safetensors\n*.bin\n"
     ).encode("utf-8")
     status = "Included in idea.md." if "idea.md" in files else "Pending the participant's parts (1)–(3)."
+    task2_text = (KIT / "predictions" / "t2_normalized.csv").exists()
+    task2_audio = (KIT / "predictions" / "t2_norm").is_dir()
+    if task2_audio:
+        task2_status = "Task 2: normalized text and generated evaluation audio are included. "
+    elif task2_text:
+        task2_status = "Task 2: all 64 normalized texts are included; evaluation audio is pending. "
+    else:
+        task2_status = "Task 2 is not completed; no generated evaluation audio is submitted yet. "
+    if task2_text:
+        task2 = results.get("task2", {})
+        if task2.get("val_cer") is None:
+            task2_status += "Validation audio scores remain pending. "
+        else:
+            task2_status += f"Measured validation CER {task2['val_cer']}, SIM {task2['val_sim']}. "
     files["README.md"] = (
-        f"# {roll_no} TTS bootcamp midterm\n\n"
+        f"# {roll_no} TTS bootcamp submission\n\n"
         "Task 1: 24 supplied baseline recordings scored; CER 0.2426, SIM 0.8303, zero failed items. "
         "The participant reviewed all 14 recordings above CER 0.20; their tags are in "
         "[predictions/t1_val_errors.csv](predictions/t1_val_errors.csv).\n\n"
         "Reproduction commands and AI-assistance disclosure: [code/README.md](code/README.md). "
         "Scoring and listening evidence: [code/task1_evidence/](code/task1_evidence/).\n\n"
         f"Idea card: {status}\n\n"
-        "Task 2 is not completed, so no generated evaluation audio is submitted yet. "
+        + task2_status +
         "The original organizer kit is a local prerequisite for reproduction; its data and model weights "
         "are excluded from this repository.\n"
     ).encode("utf-8")

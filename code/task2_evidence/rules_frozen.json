@@ -1,0 +1,10 @@
+{
+  "rules_sha256": "96b2bfa7efcc63e617c89814e487248519339a41f3baeab53517998247c2d03d",
+  "baseline_config_sha256": "19f0cae1d98382d12128a11a61e1b5414595dfc338e5bd1fcd1acb9db4f5b710",
+  "development_split": "val only",
+  "validation_items_checked": 24,
+  "audio_generated": false,
+  "note": "Text matching is not an audio CER measurement. No evaluation text or outputs were used to develop rules.",
+  "normalized_rows": 64,
+  "normalized_csv_sha256": "5b740a22225a3beff1aace952bcc5eb456c381dbb38fca7acdcb3911c1526200"
+}
