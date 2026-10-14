@@ -118,6 +118,8 @@ python code/run_task2.py --stage package
 
 Bring back `25B1207_tts_bootcamp.zip` after the run. It holds the completed predictions, actual `results.json` and scoring evidence without model weights or kit data. Keep the server's working folder for Task 3 controls and later timing; model downloads are reused. The lab commands above are prepared instructions, not a claim that server synthesis has been executed.
 
+The participant's updated repository overview is preserved in `code/repository_overview.md`, which the builder uses for the root `README.md`. Its Task 2 pending sentence is refreshed automatically after actual audio measurements. Update other completed/pending descriptions as work proceeds, while retaining the submitted idea-card wording.
+
 ### Optional Colab/Kaggle workflow
 
 The local Mac has no CUDA GPU and Task 1's environment does not include IndicF5. `code/task2_run.ipynb` is an optional notebook interface for a Python 3.10–3.12 GPU runtime compatible with the CUDA 12.8 wheels. It stops on Python 3.13 instead of attempting the incompatible NumPy installation. Put the original kit and these participant files together in one folder, including `reports/task2/rules_frozen.json` from the working project or its packaged copy at `code/task2_evidence/rules_frozen.json`. The runner restores and verifies the packaged fingerprint when needed. Select the folder as `KIT` and accept the gated IndicF5 model terms. Supply a read-only Hugging Face token through Colab Secrets (`HF_TOKEN`) or the notebook's hidden prompt; never put a token in code, logs or the repository.

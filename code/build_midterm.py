@@ -108,6 +108,18 @@ def main():
         "The original organizer kit is a local prerequisite for reproduction; its data and model weights "
         "are excluded from this repository.\n"
     ).encode("utf-8")
+    overview = KIT / "code" / "repository_overview.md"
+    if overview.exists():
+        # Preserve the participant's repository overview rather than overwriting
+        # it during packaging. Refresh its Task 2 status after actual measurement.
+        text = overview.read_text(encoding="utf-8")
+        pending = "Task 2 evaluation audio and validation audio scores remain pending."
+        task2 = results.get("task2", {})
+        if task2.get("val_cer") is not None:
+            state = "Task 2 evaluation audio is included." if task2_audio else "Task 2 evaluation audio remains pending."
+            state += f" Measured validation CER is {task2['val_cer']} and SIM is {task2['val_sim']}."
+            text = text.replace(pending, state)
+        files["README.md"] = text.encode("utf-8")
 
     for name, data in files.items():
         if str(KIT.resolve()).encode() in data or str(Path.home()).encode() in data:
