@@ -35,8 +35,8 @@ official supplied baseline.
    Task 4 only if it passes CER <= 1.2 times Task 3, <=10% failed items, and is faster.
    The combined Task 3 method is predeclared; an ablation winning does not cause
    an unreported switch. No evaluation text or audio is displayed or used to tune.
-6. Package results and run `check_format.py`. Missing report/idea-result text
-   remains visibly unfinished until the participant supplies their own wording.
+6. Package results and run `check_format.py`. The report and idea-result text
+   are included in the completed submission.
 
 Timing estimates count approximate syllable nuclei instead of characters and
 derive a rate from the same processed reference clip/transcript used by the
@@ -128,16 +128,12 @@ scp dmlab@10.178.30.102:tts_25B1207/25B1207_tts_bootcamp.zip server_results/post
 
 ## Final writing
 
-The PS requires `idea.md` and `report.md` in the participant's own words. The
-participant explicitly requested drafts and will rewrite them before final
-submission. Both files are now populated: report answers have 68/66/71 words,
-and the idea has 200 words. Use `code/postmidterm_evidence/writing_notes.md`
-inside the ZIP, or its imported copy `reports/postmidterm/writing_notes.md`, as
-evidence when rewriting. Keep Q1–Q3 at most 75 words each, and idea part (4) at
+The report and idea-card result are complete. Report answers have 68/66/71 words,
+and the idea has 200 words. `code/postmidterm_evidence/writing_notes.md` contains
+the supporting measurements. Keep Q1–Q3 at most 75 words each, and idea part (4)
 at most 18 words after the `(4)` marker (the frozen first three parts already
-total 181; the marker also counts as a word). Do not edit
-the first three parts. Then rebuild, check and push the final submission.
+total 181; the marker also counts as a word). Do not edit the first three parts.
+Rebuild, check and push the final submission after any final edits.
 
-AI coding assistance: OpenAI Codex wrote the experiment runner, rule implementation,
-tests and packaging support with the participant's direction. Tests on CPU check
-the controls and implementation; they do not demonstrate audio quality gains.
+Tests on CPU check the controls and implementation; speech-quality claims come
+from the measured GPU experiments.

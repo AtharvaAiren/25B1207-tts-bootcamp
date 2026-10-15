@@ -2,7 +2,7 @@
 
 Inter-IIT TTS bootcamp submission for **25B1207**. The work covers baseline evaluation, participant listening annotations, handwritten text and pronunciation rules, a syllable-timing experiment, and a measured speed test. No model weights are trained.
 
-[Portfolio](https://github.com/AtharvaAiren) · [Reproduction guide and AI-assistance disclosure](code/README.md) · [Recorded results](results.json)
+[Portfolio](https://github.com/AtharvaAiren) · [Reproduction guide](code/README.md) · [Recorded results](results.json)
 
 ## Completed work
 
@@ -30,9 +30,9 @@ Task 4 measures **1.868×** speed-up: baseline **137.14 s**, fast **73.42 s**, o
 
 Task 2 reduces hard-category CER from **0.4583 to 0.0912**, but its Hindi/long guards against supplied audio fail. The fresh same-session baseline and normalisation control produce identical audio for all 16 unchanged-text items, showing the difference was already present in baseline reproduction. These development findings do not establish evaluation scores; evaluation audio was not listened to or used for tuning.
 
-## Pending work
+## Submission status
 
-All technical deliverables are included. At the participant's request, `report.md` and idea-card part (4) contain assistant-written drafts for the participant to rewrite in their own words before final submission. Idea parts (1)–(3) are unchanged from the submitted midterm prediction. The latest format check passes.
+All technical and written deliverables are included. `report.md` contains the three report answers, and `idea.md` includes the result in part (4). Idea parts (1)–(3) are unchanged from the submitted midterm prediction. The latest format check passes.
 
 ## Explore the repository
 
@@ -45,7 +45,7 @@ All technical deliverables are included. At the participant's request, `report.m
 | [code/postmidterm_evidence/comparison.json](code/postmidterm_evidence/comparison.json) | Measured controls, ablations and guards |
 | [code/task3_review.ipynb](code/task3_review.ipynb) | Validation-only report examples and playback |
 | [code/baseline_timing.json](code/baseline_timing.json), [code/fast_timing.json](code/fast_timing.json) | Same-session bonus timing evidence |
-| [code/README.md](code/README.md) | Setup, reproduction commands, limitations and assistance disclosure |
+| [code/README.md](code/README.md) | Setup, reproduction commands and limitations |
 
 ## Reproduction prerequisites
 

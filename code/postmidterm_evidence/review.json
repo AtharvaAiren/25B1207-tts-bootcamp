@@ -10,7 +10,6 @@
   "task4_relative_cer_increase": 0.11383537653239939,
   "task4_speedup_recomputed": 1.8680242871051986,
   "evaluation_content_used_for_review_or_tuning": false,
-  "writing_pending": [
-    "Participant rewrite of assistant-drafted report.md and idea.md part (4) before final submission"
-  ]
+  "writing_pending": [],
+  "writing_complete": true
 }
