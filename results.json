@@ -1,15 +1,15 @@
 {
   "roll_no": "25B1207",
-  "machine": "macOS-15.7.4-arm64-arm-64bit, CPU (Task 1 scoring)",
+  "machine": "NVIDIA RTX PRO 4500 Blackwell, Python 3.12.3 (Task 2 synthesis and scoring)",
   "seed": 0,
   "task1": {
     "val_cer": 0.2426,
     "val_sim": 0.8303
   },
   "task2": {
-    "val_cer": null,
-    "val_sim": null,
-    "val_cer_hard": null
+    "val_cer": 0.1616,
+    "val_sim": 0.8078,
+    "val_cer_hard": 0.0912
   },
   "task3": {
     "method_name": "Contextual pronunciation rules with syllable-based timing",
@@ -42,5 +42,14 @@
     "targeted_failure": "One of: skipped_words, repeated_words, number_error, english_word_error, speaker_mismatch, other",
     "targeted_category": "The item category your Task 3 score is computed on: hindi, hinglish, hard or long",
     "speedup": "baseline_seconds / fast_seconds, from run_baseline.py timing files made on the same machine in the same session"
+  },
+  "_task1_machine": "macOS-15.7.4-arm64-arm-64bit, CPU (Task 1 scoring)",
+  "_task2_run": {
+    "rules_sha256": "96b2bfa7efcc63e617c89814e487248519339a41f3baeab53517998247c2d03d",
+    "seed": 0,
+    "baseline_decoding_unchanged": true,
+    "baseline_score_source": "reports/task2/baseline_scores.json (provided audio rescored in the same environment)",
+    "passes_other_category_guards": false,
+    "failed_items": 1
   }
 }

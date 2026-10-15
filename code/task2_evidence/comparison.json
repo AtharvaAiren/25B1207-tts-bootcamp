@@ -1,0 +1,72 @@
+{
+  "rules_sha256": "96b2bfa7efcc63e617c89814e487248519339a41f3baeab53517998247c2d03d",
+  "normalized_csv_sha256": "5b740a22225a3beff1aace952bcc5eb456c381dbb38fca7acdcb3911c1526200",
+  "baseline_config_sha256": "19f0cae1d98382d12128a11a61e1b5414595dfc338e5bd1fcd1acb9db4f5b710",
+  "seed": 0,
+  "baseline": {
+    "metrics_version": "1.0",
+    "recognizer": "openai/whisper-large-v3-turbo",
+    "speaker_model": "speechbrain/spkrec-ecapa-voxceleb",
+    "n_items": 24,
+    "failed": 0,
+    "cer": 0.2421,
+    "sim": 0.8303,
+    "cer_by_category": {
+      "hard": 0.4583,
+      "hindi": 0.0342,
+      "hinglish": 0.302,
+      "long": 0.0318
+    },
+    "sim_by_category": {
+      "hard": 0.8238,
+      "hindi": 0.8253,
+      "hinglish": 0.801,
+      "long": 0.8947
+    }
+  },
+  "normalization_only": {
+    "metrics_version": "1.0",
+    "recognizer": "openai/whisper-large-v3-turbo",
+    "speaker_model": "speechbrain/spkrec-ecapa-voxceleb",
+    "n_items": 24,
+    "failed": 1,
+    "cer": 0.1616,
+    "sim": 0.8078,
+    "cer_by_category": {
+      "hard": 0.0912,
+      "hindi": 0.1976,
+      "hinglish": 0.2986,
+      "long": 0.0427
+    },
+    "sim_by_category": {
+      "hard": 0.8413,
+      "hindi": 0.7006,
+      "hinglish": 0.8107,
+      "long": 0.8971
+    }
+  },
+  "hard_relative_cer_reduction": 0.8010037093606808,
+  "other_category_guards": {
+    "hindi": {
+      "baseline_cer": 0.0342,
+      "normalized_cer": 0.1976,
+      "limit": 0.03591,
+      "passes": false
+    },
+    "hinglish": {
+      "baseline_cer": 0.302,
+      "normalized_cer": 0.2986,
+      "limit": 0.3171,
+      "passes": true
+    },
+    "long": {
+      "baseline_cer": 0.0318,
+      "normalized_cer": 0.0427,
+      "limit": 0.03339,
+      "passes": false
+    }
+  },
+  "passes_other_category_guards": false,
+  "failed_items_within_limit": true,
+  "note": "Actual audio scores. Reference-text matching in validation_text_checks.csv is a separate text-only check."
+}

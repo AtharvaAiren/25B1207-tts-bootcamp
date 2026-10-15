@@ -49,6 +49,7 @@ def add_task2_evidence(files):
         "comparison.json", "val_control_timing.json", "t2_norm_timing.json",
         "score_baseline.log", "synthesize_val_control.log", "score_val_control.log",
         "record_results.log", "synthesize_t2_norm.log",
+        "inspection.json",
     }
     for name in sorted(allowed):
         path = evidence / name
@@ -71,6 +72,18 @@ def main():
     add_tree(files, KIT / "code", Path("code"))
     add_tree(files, KIT / "reports" / "task1", Path("code") / "task1_evidence")
     add_task2_evidence(files)
+    # Flat measurements only: never publish the private run/staging trees or
+    # duplicate ablation audio alongside the submission's prediction folders.
+    post = KIT / "reports" / "postmidterm"
+    if post.exists():
+        for path in sorted(post.iterdir()):
+            if path.is_file() and path.suffix in {".json", ".csv", ".md", ".log"}:
+                if path.name in {"package.log", "check_format.log"}:
+                    continue
+                data = path.read_bytes()
+                if path.suffix == ".log":
+                    data = data.decode("utf-8").replace(str(KIT.resolve()), "<PROJECT>").replace(str(Path.home()), "<USER_HOME>").encode("utf-8")
+                files[f"code/postmidterm_evidence/{path.name}"] = data
     add_tree(files, KIT / "predictions", Path("predictions"))
     for name in ("results.json", "idea.md", "report.md"):
         source = KIT / name
@@ -79,7 +92,7 @@ def main():
 
     files[".gitignore"] = (
         "/data/\n/.cache-task1/\n/.venv-task1/\n/.venv-tts/\n/submission/\n/reports/\n"
-        "__pycache__/\n*.pyc\n.DS_Store\n*.zip\n*.pt\n*.pth\n*.ckpt\n*.safetensors\n*.bin\n"
+        "__pycache__/\n*.pyc\n.DS_Store\n.tts_run.lock\n*.zip\n*.pt\n*.pth\n*.ckpt\n*.safetensors\n*.bin\n"
     ).encode("utf-8")
     status = "Included in idea.md." if "idea.md" in files else "Pending the participant's parts (1)–(3)."
     task2_text = (KIT / "predictions" / "t2_normalized.csv").exists()
@@ -118,7 +131,14 @@ def main():
         if task2.get("val_cer") is not None:
             state = "Task 2 evaluation audio is included." if task2_audio else "Task 2 evaluation audio remains pending."
             state += f" Measured validation CER is {task2['val_cer']} and SIM is {task2['val_sim']}."
+            if results.get("_task2_run", {}).get("passes_other_category_guards") is False:
+                state += " The first validation comparison fails the Hindi/long category guards; hard-category improvement alone does not meet the full Task 2 criteria."
             text = text.replace(pending, state)
+        task3 = results.get("task3", {})
+        if task3.get("val_cer") is not None:
+            pending_idea = "The Task 3 [idea card](idea.md) describes a proposed pronunciation/timing experiment; its predicted improvement is a hypothesis, not a measured result."
+            measured_idea = f"Task 3 has measured validation CER {task3['val_cer']} and SIM {task3['val_sim']}; its targeted Hinglish CER is {task3['val_cer_targeted']}. See [comparison and ablations](code/postmidterm_evidence/comparison.json) for guard results and the prediction check."
+            text = text.replace(pending_idea, measured_idea)
         files["README.md"] = text.encode("utf-8")
 
     for name, data in files.items():

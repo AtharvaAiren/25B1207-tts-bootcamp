@@ -1,0 +1,59 @@
+Loading openai/whisper-large-v3-turbo and speechbrain/spkrec-ecapa-voxceleb on cuda ...
+Device set to use cuda
+Device set to use cuda
+<PROJECT>/.venv-tts/lib/python3.12/site-packages/speechbrain/utils/autocast.py:188: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  wrapped_fwd = torch.cuda.amp.custom_fwd(fwd, cast_inputs=cast_inputs)
+<PROJECT>/.venv-tts/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py:573: FutureWarning: The input name `inputs` is deprecated. Please make sure to use `input_features` instead.
+  warnings.warn(
+You have passed task=transcribe, but also have set `forced_decoder_ids` to [[1, None], [2, 50360]] which creates a conflict. `forced_decoder_ids` will be ignored in favor of task=transcribe.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+
+id          cat           CER    SIM  transcript / problem
+val_hi_01   hindi       0.052  0.857  पिछले हफ़ते हमारे मोहले में एक नया पुस्तकाले खुला है जहां बच्चे शाम को आकर कहानियां पढ़ते 
+val_hi_02   hindi       0.020  0.827  सर्दियों की सुबह गरम चाय और ताजी जलेबी का स्वात कुछ और ही होता है
+val_hi_03   hindi       0.031  0.896  किसान ने बताया कि इस साल बारिश समय पर हुई इसलिए गेउं की फसल अच्छी होने की उम्मीद है
+val_hi_04   hindi       0.083  0.759  रेलगाडी स्टेशन पर दस मिनट देर से पहुची, फिर भी यात्रियों ने धैरे बनाये रखा।
+val_hi_05   hindi       0.000  0.865  मेरे छोटे भाई ने अपनी पहली कमाई से मां के लिए एक सुन्दर साड़ी खरीदी।
+val_hi_06   hindi       1.000  0.000  clipping share 0.0011 > 0.001
+val_hg_01   hinglish    0.323  0.856  आज आज में इंसर्ट बहुत हो चल रहा है
+val_hg_02   hinglish    0.297  0.764  क्या आप मुझे अपना रूर्ड एंडरस ऐसे कर सकते हैं
+val_hg_03   hinglish    0.260  0.832  मेरी फायोल एंसर हो गई अब मुझे ओयों में एक रात और रुपना पड़ेगा
+val_hg_04   hinglish    0.289  0.775  बच्चों की अर्ली कंचा सुबनो बजे शुरू होती है।
+val_hg_05   hinglish    0.304  0.867  डॉक्टर ने कहा कि रोज थोड़ी हैं और सरसर कोई जरूरी है
+val_hg_06   hinglish    0.318  0.771  इस लियन हम सब मिलकर अवे देखने और चेहें करने जाएंगे।
+val_hd_01   hard        0.063  0.879  आपके खाते में बारा मार्च दो हजार चब्वीस को एक लाख पच्चीस हजार रुपे जमा हुए हैं
+val_hd_02   hard        0.089  0.851  कंपनी का मुनाफ़ा पिछले साल अटीस लाक रुपे से बढ़कर दो करोड रुपे हो गया
+val_hd_03   hard        0.204  0.852  आर बी आई ने पांच जुन दो हजार चब्विस को नहीं ब्याजदरों की गोशना की।
+val_hd_04   hard        0.020  0.788  एटी एम से एक दिन में बीस हजार रुपे से ज्यादा नहीं निकाले जा सकते
+val_hd_05   hard        0.020  0.846  ट्रेन संख्या बारह हजार नौसो इक्यावन प्लेट फॉर्म चार पर आएगी
+val_hd_06   hard        0.065  0.855  इस साल एक लाख सैन्तालीस अजार तीन सो बैयासी चात्रों ने परिक्षा दी और उनमें से बानवे प्रतिशत
+val_hd_07   hard        0.178  0.858  जीस्टी की नई दरे एक अप्रेल दोजार चब्वी से लागू होंगी
+val_hd_08   hard        0.090  0.802  बिजली का बिल दो हजार तीन सो चालिस रुपे पचास पैसे हैं जिसे पच्चीस नमंबर दो हजार चब्वीस तक भ
+val_lg_01   long        0.024  0.885  हर साल दिवाली से पहले हमारे घर में सफाई का बड़ा अभियान चलता है मा सबको अलग-अलग काम बांट दे
+val_lg_02   long        0.030  0.916  हमारे स्कूल के हिंदी अध्यापक कक्षा में किताब से ज्यादा कहानियों के जरीय पढ़ाते थे वे कहते 
+val_lg_03   long        0.075  0.931  पिछली गर्मियों में हम परिवार के साथ रिश्खिश गुमने गए थे सुबा सुबा गंगा के किनारे बैट करेते
+val_lg_04   long        0.042  0.857  आजकल बहुत से लोग देर रात तक मोबाइल फोन चलाते रहते हैं और फिर सुबह ठकान की शिकायत करते हैं 
+
+{
+ "metrics_version": "1.0",
+ "recognizer": "openai/whisper-large-v3-turbo",
+ "speaker_model": "speechbrain/spkrec-ecapa-voxceleb",
+ "n_items": 24,
+ "failed": 1,
+ "cer": 0.1616,
+ "sim": 0.8078,
+ "cer_by_category": {
+  "hard": 0.0912,
+  "hindi": 0.1976,
+  "hinglish": 0.2986,
+  "long": 0.0427
+ },
+ "sim_by_category": {
+  "hard": 0.8413,
+  "hindi": 0.7006,
+  "hinglish": 0.8107,
+  "long": 0.8971
+ }
+}
+
+Items with CER > 0.2 (listen to these for Task 1): val_hi_06, val_hg_01, val_hg_02, val_hg_03, val_hg_04, val_hg_05, val_hg_06, val_hd_03

@@ -13,7 +13,7 @@ Inter-IIT TTS bootcamp submission for **25B1207**. The work covers evaluation of
 
 ## Pending work
 
-Task 2 evaluation audio and validation audio scores remain pending. The Task 3 [idea card](idea.md) describes a proposed pronunciation/timing experiment; its predicted improvement is a hypothesis, not a measured result.
+Task 2 evaluation audio remains pending. Measured validation CER is 0.1616 and SIM is 0.8078. The first validation comparison fails the Hindi/long category guards; hard-category improvement alone does not meet the full Task 2 criteria. The Task 3 [idea card](idea.md) describes a proposed pronunciation/timing experiment; its predicted improvement is a hypothesis, not a measured result.
 
 ## Explore the repository
 

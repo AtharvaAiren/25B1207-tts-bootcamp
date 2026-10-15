@@ -1,4 +1,23 @@
-# Task 1 reproduction
+# Reproduction and measured status
+
+The fetched first Task 2 validation run is now included. Same-environment rescoring of the supplied baseline gives CER 0.2421 and SIM 0.8303; normalization gives CER 0.1616 and SIM 0.8078, with one clipping failure. Hard-category CER falls from 0.4583 to 0.0912, but Hindi and long-category 5% guards **fail**. The overall improvement does not establish Task 2 eligibility. Audio sanity statistics match the saved per-item CSV. Initial duplicate-run logs are preserved in the fetched archive; timings from that run are not used to claim a bonus speed-up.
+
+The submitted idea card remains unchanged. The post-midterm pronunciation/timing runner and bonus test are implemented and CPU-tested, **not yet measured on the GPU**. See [POSTMIDTERM.md](POSTMIDTERM.md) for the source-only server update, exact execution/fetch commands, ablations, timing exclusions, loudness diagnostic, and writing still needed after the experiments. No Task 3 or Task 4 scores are invented.
+
+Exact commands run for this update:
+
+```bash
+.venv-task1/bin/python code/import_gpu_results.py server_results/task2_validation/25B1207_tts_bootcamp.zip
+.venv-task1/bin/python -m unittest discover -s code -p 'test_*.py' -v
+.venv-task1/bin/python code/run_postmidterm.py --stage prepare
+.venv-task1/bin/python code/build_midterm.py
+.venv-task1/bin/python check_format.py 25B1207_tts_bootcamp.zip
+.venv-task1/bin/python code/prepare_postmidterm_update.py
+```
+
+The 19 CPU checks include a complete synthetic-audio/fake-model run through validation and blind evaluation, plus rule composition, unsupported-word fallback, bounded speed, loudness-only attenuation, ablation controls, a duplicate-run lock and quality gates. This tests implementation and artifact contracts; it is not speech-quality evidence.
+
+## Task 1 reproduction
 
 Run these commands from the kit root. The provided `metrics.py` and baseline recordings are unchanged. Task 1 downloads Whisper and ECAPA for scoring; it does not download IndicF5.
 
@@ -73,9 +92,9 @@ Exact local commands run:
 
 Evidence is in `reports/task2/rules_frozen.json` and `validation_text_checks.csv`, copied to `code/task2_evidence/` by the submission builder. The rule fingerprint and normalized-CSV fingerprint must match before synthesis.
 
-## Task 2: audio run (prepared, not executed locally)
+## Task 2: initial lab audio workflow
 
-The participant will run the audio stages on their lab GPU. The midterm form has been submitted; parts (1)–(3) of `idea.md` are frozen. The same GPU transfer bundle and command-line runner work on a lab server without Colab or Google Drive.
+The participant ran the validation audio stage on their lab GPU and fetched its measurements, summarized above. The commands below document that initial setup; use the post-midterm update for the next experiment. The midterm form has been submitted; parts (1)–(3) of `idea.md` are frozen.
 
 ### Lab GPU terminal workflow
 

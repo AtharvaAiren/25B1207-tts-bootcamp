@@ -12,7 +12,6 @@ import importlib.metadata
 import json
 import os
 import shutil
-import subprocess
 import sys
 import time
 from pathlib import Path
@@ -26,6 +25,7 @@ def sha256(path):
 
 
 def check_frozen_text():
+    EVIDENCE.mkdir(parents=True, exist_ok=True)
     frozen_path = EVIDENCE / "rules_frozen.json"
     if not frozen_path.exists():
         # The ZIP/GitHub layout keeps small evidence in code/. Restore only
@@ -61,36 +61,11 @@ def check_validation_ready(frozen, seed):
 
 
 def run_logged(arguments, name, *, show_tail=True, allow_patch_retry=False):
-    """Run a fresh process, with progress and logs but no evaluation text display."""
-    log = EVIDENCE / f"{name}.log"
-    command = [sys.executable, "-u", *arguments]
-    for attempt in range(2 if allow_patch_retry else 1):
-        print("Running:", " ".join(arguments), flush=True)
-        started = time.monotonic()
-        with log.open("w" if attempt == 0 else "a", encoding="utf-8") as stream:
-            process = subprocess.Popen(command, cwd=KIT, stdout=stream, stderr=subprocess.STDOUT)
-            last_update = started
-            try:
-                while process.poll() is None:
-                    time.sleep(5)
-                    now = time.monotonic()
-                    if now - last_update >= 30:
-                        print(f"  {name}: still running ({int(now - started)}s); outputs save to your kit folder.", flush=True)
-                        last_update = now
-            except KeyboardInterrupt:
-                process.terminate()
-                process.wait()
-                raise
-        output = log.read_text(encoding="utf-8", errors="replace")
-        patch_restart = "The model's own code needed the length fix" in output or "f5_tts was imported before the length fix" in output
-        if process.returncode and allow_patch_retry and attempt == 0 and patch_restart:
-            print("The kit applied its one-time length patch; restarting the synthesis process.", flush=True)
-            continue
-        if show_tail:
-            print("\n".join(output.splitlines()[-16:]), flush=True)
-        if process.returncode:
-            raise RuntimeError(f"{name} failed (exit {process.returncode}); details are in reports/task2/{log.name}")
-        return
+    """Run a fresh process, with cleanup and no evaluation text display."""
+    from experiment_support import run_child
+    print("Running:", " ".join(arguments), flush=True)
+    run_child(KIT, arguments, EVIDENCE / f"{name}.log",
+              show_tail=show_tail, patch_retry=allow_patch_retry)
 
 
 def check_audio(directory, split):
@@ -192,4 +167,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    from experiment_support import exclusive_run
+    with exclusive_run(KIT):
+        main()
