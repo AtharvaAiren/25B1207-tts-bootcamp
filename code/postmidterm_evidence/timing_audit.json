@@ -1,0 +1,266 @@
+[
+  {
+    "id": "val_hi_01",
+    "overrides": {},
+    "peak_gain": 0.8970525013350239,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_02",
+    "overrides": {},
+    "peak_gain": 0.8713370926789415,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_03",
+    "overrides": {},
+    "peak_gain": 0.9992320165912202,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_04",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_05",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_06",
+    "overrides": {},
+    "peak_gain": 0.6877253978604269,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hg_01",
+    "overrides": {
+      "speed": 1.2406
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 6.252417680447774,
+      "estimated_target_syllables": 14,
+      "character_seconds": 2.777872807017544,
+      "syllable_seconds": 2.2391338383838386,
+      "unbounded_speed": 1.2406015037593983,
+      "speed": 1.2406
+    }
+  },
+  {
+    "id": "val_hg_02",
+    "overrides": {
+      "speed": 0.9556
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 3.5644824781640088,
+      "estimated_target_syllables": 17,
+      "character_seconds": 4.557543238993711,
+      "syllable_seconds": 4.7692757936507935,
+      "unbounded_speed": 0.9556048834628191,
+      "speed": 0.9556
+    }
+  },
+  {
+    "id": "val_hg_03",
+    "overrides": {
+      "speed": 1.25
+    },
+    "peak_gain": 0.9002780530794099,
+    "rewriting": [],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 4.8732313769647515,
+      "estimated_target_syllables": 22,
+      "character_seconds": 5.736017647058824,
+      "syllable_seconds": 4.514458333333334,
+      "unbounded_speed": 1.2705882352941176,
+      "speed": 1.25
+    }
+  },
+  {
+    "id": "val_hg_04",
+    "overrides": {
+      "speed": 1.1875
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 4.534651299237264,
+      "estimated_target_syllables": 16,
+      "character_seconds": 4.189958333333333,
+      "syllable_seconds": 3.528385964912281,
+      "unbounded_speed": 1.1875,
+      "speed": 1.1875
+    }
+  },
+  {
+    "id": "val_hg_05",
+    "overrides": {
+      "speed": 1.25
+    },
+    "peak_gain": 0.9815553974613397,
+    "rewriting": [],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 6.252417680447774,
+      "estimated_target_syllables": 19,
+      "character_seconds": 4.047757518796993,
+      "syllable_seconds": 3.038824494949495,
+      "unbounded_speed": 1.33201424614167,
+      "speed": 1.25
+    }
+  },
+  {
+    "id": "val_hg_06",
+    "overrides": {
+      "speed": 0.8825
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 3.5644824781640088,
+      "estimated_target_syllables": 22,
+      "character_seconds": 5.446819968553459,
+      "syllable_seconds": 6.172003968253968,
+      "unbounded_speed": 0.8825042881646656,
+      "speed": 0.8825
+    }
+  },
+  {
+    "id": "val_hd_01",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_02",
+    "overrides": {},
+    "peak_gain": 0.8144041574257512,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_03",
+    "overrides": {},
+    "peak_gain": 0.8777268208020035,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_04",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_05",
+    "overrides": {},
+    "peak_gain": 0.9321705849359958,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_06",
+    "overrides": {},
+    "peak_gain": 0.77471971597808,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_07",
+    "overrides": {},
+    "peak_gain": 0.9316166748771179,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_08",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_01",
+    "overrides": {},
+    "peak_gain": 0.8077680231947613,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_02",
+    "overrides": {},
+    "peak_gain": 0.7595008011320684,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_03",
+    "overrides": {},
+    "peak_gain": 0.9211963610722583,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_04",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  }
+]

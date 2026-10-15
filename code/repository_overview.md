@@ -1,6 +1,6 @@
 # Hindi/Hinglish TTS Evaluation and Text Normalisation
 
-Inter-IIT TTS bootcamp submission for **25B1207**. The work covers evaluation of supplied speech recordings, participant listening annotations, handwritten Hindi/Hinglish text-normalisation rules and a prepared GPU synthesis workflow.
+Inter-IIT TTS bootcamp submission for **25B1207**. The work covers baseline evaluation, participant listening annotations, handwritten text and pronunciation rules, a syllable-timing experiment, and a measured speed test. No model weights are trained.
 
 [Portfolio](https://github.com/AtharvaAiren) · [Reproduction guide and AI-assistance disclosure](code/README.md) · [Recorded results](results.json)
 
@@ -10,10 +10,29 @@ Inter-IIT TTS bootcamp submission for **25B1207**. The work covers evaluation of
 - Reviewed all 14 recordings above CER 0.20 and recorded participant listening judgments.
 - Implemented text-normalisation rules for Hindi numbers, currency, dates, percentages and abbreviations.
 - Prepared all 64 normalised texts and a GPU workflow for synthesis and scoring.
+- Completed the pronunciation/timing ablations on all 24 validation items and generated 40 evaluation clips each for Tasks 2, 3 and 4.
+- Verified all 168 submitted generated WAVs against their recorded hashes and checked both validation folders against saved sanity statistics and CER transcripts.
+
+## Measured validation results
+
+| System | Overall CER | Hinglish CER | SIM |
+| --- | ---: | ---: | ---: |
+| Supplied baseline, rescored on GPU | 0.2421 | 0.3020 | 0.8303 |
+| Normalisation only | 0.1616 | 0.2986 | 0.8078 |
+| Pronunciation rules only | 0.0535 | 0.0283 | 0.8455 |
+| Timing only | 0.1279 | 0.3262 | 0.8446 |
+| Submitted combination (Task 3) | 0.0571 | 0.0429 | 0.8421 |
+| Faster combination (Task 4) | 0.0636 | 0.0580 | 0.8410 |
+
+Task 3 lowers Hinglish CER by **85.79%** relative to the supplied baseline and passes its development guards. Rewriting alone performs better than the combination, so the predicted benefit from timing is not supported. The predeclared combination remains submitted. Loudness safety is shared by the idea variants; a separate loudness-matched control isolates clipping effects.
+
+Task 4 measures **1.868×** speed-up: baseline **137.14 s**, fast **73.42 s**, on the same GPU in the same session with loading and one warm-up excluded. Its CER rises **11.38%**, within the allowed 20%.
+
+Task 2 reduces hard-category CER from **0.4583 to 0.0912**, but its Hindi/long guards against supplied audio fail. The fresh same-session baseline and normalisation control produce identical audio for all 16 unchanged-text items, showing the difference was already present in baseline reproduction. These development findings do not establish evaluation scores; evaluation audio was not listened to or used for tuning.
 
 ## Pending work
 
-Task 2 evaluation audio and validation audio scores remain pending. The Task 3 [idea card](idea.md) describes a proposed pronunciation/timing experiment; its predicted improvement is a hypothesis, not a measured result.
+All technical deliverables are included. At the participant's request, `report.md` and idea-card part (4) contain assistant-written drafts for the participant to rewrite in their own words before final submission. Idea parts (1)–(3) are unchanged from the submitted midterm prediction. The latest format check passes.
 
 ## Explore the repository
 
@@ -23,6 +42,9 @@ Task 2 evaluation audio and validation audio scores remain pending. The Task 3 [
 | [code/task1_evidence/](code/task1_evidence/) | Baseline scoring and listening evidence |
 | [code/task2_evidence/](code/task2_evidence/) | Frozen-rule evidence |
 | [code/task2_run.ipynb](code/task2_run.ipynb) | Prepared GPU synthesis workflow |
+| [code/postmidterm_evidence/comparison.json](code/postmidterm_evidence/comparison.json) | Measured controls, ablations and guards |
+| [code/task3_review.ipynb](code/task3_review.ipynb) | Validation-only report examples and playback |
+| [code/baseline_timing.json](code/baseline_timing.json), [code/fast_timing.json](code/fast_timing.json) | Same-session bonus timing evidence |
 | [code/README.md](code/README.md) | Setup, reproduction commands, limitations and assistance disclosure |
 
 ## Reproduction prerequisites

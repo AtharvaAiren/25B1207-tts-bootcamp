@@ -1,0 +1,34 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "gpu": "NVIDIA RTX PRO 4500 Blackwell",
+  "capability": [
+    12,
+    0
+  ],
+  "cuda_build": "12.8",
+  "baseline_config": {
+    "repo": "ai4bharat/IndicF5",
+    "revision": "fb652a96e508091045890dae5bb99fe511facbcf",
+    "length_fix": true,
+    "model_sample_rate": 24000,
+    "decoding": {
+      "nfe_step": 32,
+      "cfg_strength": 2.0,
+      "sway_sampling_coef": -1.0,
+      "speed": 1.0,
+      "cross_fade_duration": 0.15,
+      "target_rms": 0.1
+    }
+  },
+  "packages": {
+    "torch": "2.7.1+cu128",
+    "torchaudio": "2.7.1+cu128",
+    "f5_tts": "0.1.0",
+    "numpy": "1.26.4",
+    "pyarrow": "19.0.1",
+    "datasets": "3.3.2",
+    "transformers": "4.49.0",
+    "huggingface-hub": "0.29.3",
+    "speechbrain": "1.0.3"
+  }
+}

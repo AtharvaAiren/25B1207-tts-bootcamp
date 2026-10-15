@@ -1,11 +1,23 @@
-# Remaining GPU experiments
+# Post-midterm experiments and results
+
+The GPU run completed, including all 120 evaluation outputs and 48 submitted
+validation outputs. Overall validation CER is 0.0571 for the combined Task 3
+method, with SIM 0.8421 and Hinglish CER 0.0429. Rewriting alone is better on
+Hinglish (0.0283), so the timing-benefit prediction is not supported. Task 4 has
+CER 0.0636 and same-session speed-up 1.8680, within the 20% CER guard. See
+`code/postmidterm_evidence/comparison.json` in the submission for all ablations.
+
+The frozen source is unchanged. The instructions below reproduce the experiment;
+another GPU run is not needed to finish the current written deliverables.
 
 The first normalization run is saved in `server_results/task2_validation/` locally.
 Its hard CER improved from 0.4583 to 0.0912 (80.10% relative reduction), but Hindi
 and long-category guards failed. One Hindi item failed the clipping sanity check.
 The supplied baseline and regenerated audio differ even where text is unchanged;
-a fresh same-session raw baseline is needed for a useful diagnosis. This does not
-erase the comparison against the official supplied baseline.
+the fresh same-session raw baseline confirms identical audio to the control for
+all 16 unchanged-text items. This diagnoses a reproduction difference rather
+than a normalization effect. It does not erase the failed guards against the
+official supplied baseline.
 
 ## What the runner does
 
@@ -30,7 +42,8 @@ Timing estimates count approximate syllable nuclei instead of characters and
 derive a rate from the same processed reference clip/transcript used by the
 baseline. Generation `speed` is bounded to [0.75, 1.25] for items with English.
 Hindi-only items keep speed 1. This changes synthesis duration, not recorded audio
-speed. The handwritten estimates are an untested hypothesis.
+speed. These estimates were fixed before testing; the results did not support
+an aggregate benefit over pronunciation rules alone.
 
 The idea variants and bonus uniformly attenuate peaks above 0.95 before PCM save.
 This is permitted loudness normalization. The raw baseline and normalization-only
@@ -115,11 +128,14 @@ scp dmlab@10.178.30.102:tts_25B1207/25B1207_tts_bootcamp.zip server_results/post
 
 ## Final writing
 
-The PS requires `idea.md` and `report.md` in the participant's own words. After
-the measured results arrive, use `code/postmidterm_evidence/writing_notes.md`
+The PS requires `idea.md` and `report.md` in the participant's own words. The
+participant explicitly requested drafts and will rewrite them before final
+submission. Both files are now populated: report answers have 68/66/71 words,
+and the idea has 200 words. Use `code/postmidterm_evidence/writing_notes.md`
 inside the ZIP, or its imported copy `reports/postmidterm/writing_notes.md`, as
-evidence. Write Q1–Q3 with at most 75 words each, and append idea part (4) with
-at most 19 words (the frozen first three parts already total 181). Do not edit
+evidence when rewriting. Keep Q1–Q3 at most 75 words each, and idea part (4) at
+at most 18 words after the `(4)` marker (the frozen first three parts already
+total 181; the marker also counts as a word). Do not edit
 the first three parts. Then rebuild, check and push the final submission.
 
 AI coding assistance: OpenAI Codex wrote the experiment runner, rule implementation,

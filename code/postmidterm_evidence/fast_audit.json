@@ -1,0 +1,416 @@
+[
+  {
+    "id": "val_hi_01",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_02",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 0.9164982336324929,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_03",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_04",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_05",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_06",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 0.7307226207939456,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hg_01",
+    "overrides": {
+      "speed": 1.1697,
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [
+      {
+        "original": "office",
+        "replacement": "ऑफ़िस",
+        "covered": true,
+        "estimated_syllables": 2
+      },
+      {
+        "original": "internet",
+        "replacement": "इंटरनेट",
+        "covered": true,
+        "estimated_syllables": 3
+      },
+      {
+        "original": "slow",
+        "replacement": "स्लो",
+        "covered": true,
+        "estimated_syllables": 1
+      }
+    ],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 6.252417680447774,
+      "estimated_target_syllables": 14,
+      "character_seconds": 2.619137218045113,
+      "syllable_seconds": 2.2391338383838386,
+      "unbounded_speed": 1.1697099892588614,
+      "speed": 1.1697
+    }
+  },
+  {
+    "id": "val_hg_02",
+    "overrides": {
+      "speed": 0.909,
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [
+      {
+        "original": "new",
+        "replacement": "न्यू",
+        "covered": true,
+        "estimated_syllables": 1
+      },
+      {
+        "original": "address",
+        "replacement": "एड्रेस",
+        "covered": true,
+        "estimated_syllables": 2
+      },
+      {
+        "original": "message",
+        "replacement": "मेसेज",
+        "covered": true,
+        "estimated_syllables": 2
+      }
+    ],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 3.5644824781640088,
+      "estimated_target_syllables": 17,
+      "character_seconds": 4.335224056603773,
+      "syllable_seconds": 4.7692757936507935,
+      "unbounded_speed": 0.9089900110987791,
+      "speed": 0.909
+    }
+  },
+  {
+    "id": "val_hg_03",
+    "overrides": {
+      "speed": 1.2471,
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [
+      {
+        "original": "flight",
+        "replacement": "फ़्लाइट",
+        "covered": true,
+        "estimated_syllables": 1
+      },
+      {
+        "original": "cancel",
+        "replacement": "कैंसल",
+        "covered": true,
+        "estimated_syllables": 2
+      },
+      {
+        "original": "hotel",
+        "replacement": "होटल",
+        "covered": true,
+        "estimated_syllables": 2
+      }
+    ],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 4.8732313769647515,
+      "estimated_target_syllables": 22,
+      "character_seconds": 5.629795098039216,
+      "syllable_seconds": 4.514458333333334,
+      "unbounded_speed": 1.2470588235294118,
+      "speed": 1.2471
+    }
+  },
+  {
+    "id": "val_hg_04",
+    "overrides": {
+      "speed": 1.1875,
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [
+      {
+        "original": "online",
+        "replacement": "ऑनलाइन",
+        "covered": true,
+        "estimated_syllables": 2
+      },
+      {
+        "original": "class",
+        "replacement": "क्लास",
+        "covered": true,
+        "estimated_syllables": 1
+      }
+    ],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 4.534651299237264,
+      "estimated_target_syllables": 16,
+      "character_seconds": 4.189958333333333,
+      "syllable_seconds": 3.528385964912281,
+      "unbounded_speed": 1.1875,
+      "speed": 1.1875
+    }
+  },
+  {
+    "id": "val_hg_05",
+    "overrides": {
+      "speed": 1.25,
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [
+      {
+        "original": "walking",
+        "replacement": "वॉकिंग",
+        "covered": true,
+        "estimated_syllables": 2
+      },
+      {
+        "original": "proper",
+        "replacement": "प्रॉपर",
+        "covered": true,
+        "estimated_syllables": 2
+      },
+      {
+        "original": "sleep",
+        "replacement": "स्लीप",
+        "covered": true,
+        "estimated_syllables": 1
+      }
+    ],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 6.252417680447774,
+      "estimated_target_syllables": 19,
+      "character_seconds": 3.968389724310777,
+      "syllable_seconds": 3.038824494949495,
+      "unbounded_speed": 1.3058963197467353,
+      "speed": 1.25
+    }
+  },
+  {
+    "id": "val_hg_06",
+    "overrides": {
+      "speed": 0.8105,
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [
+      {
+        "original": "weekend",
+        "replacement": "वीकेंड",
+        "covered": true,
+        "estimated_syllables": 2
+      },
+      {
+        "original": "movie",
+        "replacement": "मूवी",
+        "covered": true,
+        "estimated_syllables": 2
+      },
+      {
+        "original": "shopping",
+        "replacement": "शॉपिंग",
+        "covered": true,
+        "estimated_syllables": 2
+      }
+    ],
+    "timing": {
+      "applied": true,
+      "reference_syllables_per_second": 3.5644824781640088,
+      "estimated_target_syllables": 22,
+      "character_seconds": 5.002181603773585,
+      "syllable_seconds": 6.172003968253968,
+      "unbounded_speed": 0.8104631217838766,
+      "speed": 0.8105
+    }
+  },
+  {
+    "id": "val_hd_01",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_02",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 0.9053566746328099,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_03",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 0.9777847687128607,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_04",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_05",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_06",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 0.8674438982358267,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_07",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 0.9772610200003555,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_08",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_01",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 0.9014172601326589,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_02",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 0.8111805860076554,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_03",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_04",
+    "overrides": {
+      "nfe_step": 16
+    },
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  }
+]

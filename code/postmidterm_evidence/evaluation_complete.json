@@ -1,0 +1,25 @@
+{
+  "session": "eval_20261015T141423599417Z",
+  "validation_session": "20261015T135856253656Z",
+  "source_sha256": {
+    "code/pronunciation.py": "72ae6bb23ab7bad87b92cfa626e8e6ecd4055a1512011bedd90247ee80fc2129",
+    "code/run_postmidterm.py": "fa0ad4f728730b1397c80461e103661ad13c64a28ab7b08246370044ea91a8c4",
+    "code/experiment_support.py": "21c90f117f9da9c84b86f158a64e82729c5fb2ae3ab90b2ce2cc3da4898f4654",
+    "code/normalize.py": "96b2bfa7efcc63e617c89814e487248519339a41f3baeab53517998247c2d03d",
+    "code/run_task2.py": "0c420cd87310b574db13248674aa22ca4705aafcb6ebbedc58ddfb45f0ddad84",
+    "code/record_task2_results.py": "e9fbcd0a62543e461f441c8fb7547b89f172b087fab10a6db42260fef123873f",
+    "code/requirements_gpu_server.txt": "e78f8c8c399891e4da6eca982fd431b0cf4b4185e79241816f3567e158b2cae3",
+    "baseline/tts.py": "0e7f0e40031d01e7e0c50922296ef19d37a62b88b085e997a66e9df4f7d5b189",
+    "baseline/patch_length.py": "aae70077afe69f2f1e1bb58c139c5c5f5473d5180c024443bc036453efa78217",
+    "baseline/config.yaml": "19f0cae1d98382d12128a11a61e1b5414595dfc338e5bd1fcd1acb9db4f5b710",
+    "metrics.py": "3c3c9f3f9d21dafb8d372675dac8d9ffeb4db9f21e6d4971efb5701e85353137",
+    "idea.md": "c2fe42ecb9d50ea306ec9c456957abdc4aaa549b9f9bc00b0e048c95c50a1718",
+    "predictions/t2_normalized.csv": "5b740a22225a3beff1aace952bcc5eb456c381dbb38fca7acdcb3911c1526200"
+  },
+  "folders": [
+    "t2_norm",
+    "t3_idea",
+    "t4_fast"
+  ],
+  "evaluation_text_or_audio_used_for_tuning": false
+}

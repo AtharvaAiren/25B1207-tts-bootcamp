@@ -1,0 +1,218 @@
+[
+  {
+    "id": "val_hi_01",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_02",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_03",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_04",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_05",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hi_06",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hg_01",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hg_02",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hg_03",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hg_04",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hg_05",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hg_06",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_01",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_02",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_03",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_04",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_05",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_06",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_07",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_hd_08",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_01",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_02",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_03",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  },
+  {
+    "id": "val_lg_04",
+    "overrides": {},
+    "peak_gain": 1.0,
+    "rewriting": [],
+    "timing": {
+      "applied": false
+    }
+  }
+]

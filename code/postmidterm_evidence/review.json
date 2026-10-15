@@ -1,0 +1,16 @@
+{
+  "source_archive_sha256": "295332b9015acfcfa18e18e61315d325b195e65156119d459a4d71d874c627f8",
+  "verified_generated_audio_hashes": 168,
+  "validation_audio_sanity_stats_match_csv": true,
+  "all_eight_score_summaries_recomputed_from_csv": true,
+  "frozen_source_and_idea_fingerprints_match": true,
+  "validation_and_evaluation_sessions_match_receipts": true,
+  "task3_hinglish_relative_improvement_vs_provided": 0.8579470198675497,
+  "timing_prediction_supported": false,
+  "task4_relative_cer_increase": 0.11383537653239939,
+  "task4_speedup_recomputed": 1.8680242871051986,
+  "evaluation_content_used_for_review_or_tuning": false,
+  "writing_pending": [
+    "Participant rewrite of assistant-drafted report.md and idea.md part (4) before final submission"
+  ]
+}

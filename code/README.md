@@ -2,7 +2,11 @@
 
 The fetched first Task 2 validation run is now included. Same-environment rescoring of the supplied baseline gives CER 0.2421 and SIM 0.8303; normalization gives CER 0.1616 and SIM 0.8078, with one clipping failure. Hard-category CER falls from 0.4583 to 0.0912, but Hindi and long-category 5% guards **fail**. The overall improvement does not establish Task 2 eligibility. Audio sanity statistics match the saved per-item CSV. Initial duplicate-run logs are preserved in the fetched archive; timings from that run are not used to claim a bonus speed-up.
 
-The submitted idea card remains unchanged. The post-midterm pronunciation/timing runner and bonus test are implemented and CPU-tested, **not yet measured on the GPU**. See [POSTMIDTERM.md](POSTMIDTERM.md) for the source-only server update, exact execution/fetch commands, ablations, timing exclusions, loudness diagnostic, and writing still needed after the experiments. No Task 3 or Task 4 scores are invented.
+The post-midterm GPU run is complete. The combined Task 3 method scores overall CER 0.0571, SIM 0.8421, and Hinglish CER 0.0429 versus the supplied baseline's 0.3020 (85.79% relative reduction). Overall CER/SIM/failure guards pass. Rewriting alone scores better on Hinglish (0.0283); timing alone scores 0.3262. The prediction that timing would add a benefit is not supported. The predeclared combined method remains submitted, with the original idea parts (1)–(3) unchanged.
+
+Task 4 passes its development quality guard: CER 0.0636 versus Task 3's 0.0571, an 11.38% relative increase within the allowed 20%. Same-session baseline synthesis takes 137.1424 seconds and the 16-step system 73.4157 seconds, a speed-up of 1.8680. Model loading and one warm-up per system are excluded. Both timing files are in `code/`; all three evaluation folders contain 40 WAVs each, and both submitted validation folders contain 24 each. Scores are validation measurements, not evaluation scores.
+
+See [POSTMIDTERM.md](POSTMIDTERM.md) for reproduction, ablations, timing exclusions and the loudness diagnostic. The same-session raw baseline and normalization-only control have identical audio for all 16 unchanged-text items; their category differences from supplied baseline audio are therefore reproduction differences, not changes introduced by normalization. Task 2's guard failures against the supplied baseline remain disclosed. At the participant's explicit request, `report.md` and idea part (4) are assistant-written drafts for later rewriting in the participant's own words. Parts (1)–(3) were not edited. The current idea has 200 words; Q1/Q2/Q3 have 68/66/71 words.
 
 Exact commands run for this update:
 
@@ -13,6 +17,8 @@ Exact commands run for this update:
 .venv-task1/bin/python code/build_midterm.py
 .venv-task1/bin/python check_format.py 25B1207_tts_bootcamp.zip
 .venv-task1/bin/python code/prepare_postmidterm_update.py
+.venv-task1/bin/python code/import_gpu_results.py server_results/postmidterm/25B1207_tts_bootcamp.zip
+.venv-task1/bin/python code/prepare_task3_review.py
 ```
 
 The 19 CPU checks include a complete synthetic-audio/fake-model run through validation and blind evaluation, plus rule composition, unsupported-word fallback, bounded speed, loudness-only attenuation, ablation controls, a duplicate-run lock and quality gates. This tests implementation and artifact contracts; it is not speech-quality evidence.
@@ -62,7 +68,7 @@ This also fills the notebook's label cell and replaces the template machine desc
 
 ## Submission check
 
-The planned Task 3 method combines contextual English pronunciation rewriting with syllable-based generation timing after Task 2 normalization. The experiment will compare normalization alone, rewriting alone, timing alone, and their combination using the same validation items, prompts, and seeds. No Task 3 experiment has been run; all performance fields remain null. `results.json` records the planned dependency as `_planned_task3.builds_on_task2: true`; the unrun result field `task3.builds_on_task2` remains null at midterm because the checker otherwise requires control audio immediately. Set that result field to true when submitting Task 3 audio, together with the required normalization-only `predictions/val_control/`. The midterm idea card is the root `idea.md`; copy its parts (1)–(3) exactly into the form and leave them unchanged after submission.
+The measured Task 3 method combines contextual English pronunciation rewriting with syllable-based generation timing after Task 2 normalization. The ablations use the same validation items, prompts and seeds. `task3.builds_on_task2` is true, with measured fields and the required normalization-only `predictions/val_control/`. The root `idea.md` preserves parts (1)–(3) submitted on the midterm form. Only part (4), written in the participant's own words, may be appended.
 
 ```bash
 .venv-task1/bin/python code/build_midterm.py
@@ -144,7 +150,7 @@ python code/run_task2.py --stage eval
 python code/run_task2.py --stage package
 ```
 
-Bring back `25B1207_tts_bootcamp.zip` after the run. It holds the completed predictions, actual `results.json` and scoring evidence without model weights or kit data. Keep the server's working folder for Task 3 controls and later timing; model downloads are reused. The lab commands above are prepared instructions, not a claim that server synthesis has been executed.
+Bring back `25B1207_tts_bootcamp.zip` after the run. It holds predictions, actual `results.json` and scoring evidence without model weights or kit data. The initial lab setup commands above document the completed Task 2 validation run. The completed Task 3/4 and evaluation run used `code/run_postmidterm.py --stage all`, documented in `POSTMIDTERM.md`; the older Task 2-only runner correctly stops at its failed validation guards.
 
 The participant's updated repository overview is preserved in `code/repository_overview.md`, which the builder uses for the root `README.md`. Its Task 2 pending sentence is refreshed automatically after actual audio measurements. Update other completed/pending descriptions as work proceeds, while retaining the submitted idea-card wording.
 
@@ -175,6 +181,6 @@ Review validation scores and the two validation playback examples. If needed, de
 
 `--stage eval` generates exactly 40 Task 2 evaluation WAVs with normalization only. It displays no evaluation text and provides no evaluation playback. Audio is checked in a staging folder before moving it into predictions; previous complete audio is preserved outside the submission. Never choose or tune using evaluation listening. `--stage package` rebuilds the same ZIP name and runs the format checker. GPU evidence is archived under `code/task2_evidence/`; staging and backup audio are excluded.
 
-Task 3 has not run. The participant confirmed the existing idea card parts (1)–(3) were submitted to the midterm form; they remain unchanged. Its normalization-only control will be the Task 2 validation audio. Task 4 is an optional later step. `report.md` and idea-card part (4) require actual experiment results and the participant's own wording.
+Task 3 and the optional Task 4 have run; measured outcomes are at the top of this file. The participant confirmed idea parts (1)–(3) were submitted to the midterm form; they remain unchanged. `task3_review.ipynb` loads only validation clips and measured transcripts for report examples. The participant requested drafts for `report.md` and idea-card part (4), and will rewrite them in their own words before final submission.
 
 AI assistance: OpenAI Codex assisted with environment setup, reproduction commands, listening notebook preparation, recording the participant's supplied labels, Task 2 normalization and checks, the GPU workflow, and submission packaging. Error observations are the participant's listening judgments. Idea-card and report wording must be the participant's own.

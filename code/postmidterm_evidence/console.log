@@ -1,0 +1,77 @@
+Prepared fixed pronunciation/timing hypothesis using validation only. No audio generated.
+Still running (30s); log: reports/postmidterm/val_worker.log
+Still running (60s); log: reports/postmidterm/val_worker.log
+Still running (90s); log: reports/postmidterm/val_worker.log
+Still running (120s); log: reports/postmidterm/val_worker.log
+Still running (150s); log: reports/postmidterm/val_worker.log
+Still running (180s); log: reports/postmidterm/val_worker.log
+Still running (210s); log: reports/postmidterm/val_worker.log
+Still running (240s); log: reports/postmidterm/val_worker.log
+Still running (270s); log: reports/postmidterm/val_worker.log
+Still running (300s); log: reports/postmidterm/val_worker.log
+Still running (330s); log: reports/postmidterm/val_worker.log
+Still running (360s); log: reports/postmidterm/val_worker.log
+Still running (390s); log: reports/postmidterm/val_worker.log
+Still running (420s); log: reports/postmidterm/val_worker.log
+Still running (450s); log: reports/postmidterm/val_worker.log
+Still running (480s); log: reports/postmidterm/val_worker.log
+Still running (510s); log: reports/postmidterm/val_worker.log
+Still running (540s); log: reports/postmidterm/val_worker.log
+Still running (570s); log: reports/postmidterm/val_worker.log
+Still running (600s); log: reports/postmidterm/val_worker.log
+Still running (630s); log: reports/postmidterm/val_worker.log
+Still running (660s); log: reports/postmidterm/val_worker.log
+Still running (690s); log: reports/postmidterm/val_worker.log
+Still running (720s); log: reports/postmidterm/val_worker.log
+Still running (750s); log: reports/postmidterm/val_worker.log
+Still running (780s); log: reports/postmidterm/val_worker.log
+Still running (810s); log: reports/postmidterm/val_worker.log
+Still running (840s); log: reports/postmidterm/val_worker.log
+Still running (870s); log: reports/postmidterm/val_worker.log
+Still running (900s); log: reports/postmidterm/val_worker.log
+Still running (930s); log: reports/postmidterm/val_worker.log
+Loading openai/whisper-large-v3-turbo and speechbrain/spkrec-ecapa-voxceleb on cuda ...
+Device set to use cuda
+Device set to use cuda
+<PROJECT>/.venv-tts/lib/python3.12/site-packages/speechbrain/utils/autocast.py:188: FutureWarning: `torch.cuda.amp.custom_fwd(args...)` is deprecated. Please use `torch.amp.custom_fwd(args..., device_type='cuda')` instead.
+  wrapped_fwd = torch.cuda.amp.custom_fwd(fwd, cast_inputs=cast_inputs)
+<PROJECT>/.venv-tts/lib/python3.12/site-packages/transformers/models/whisper/generation_whisper.py:573: FutureWarning: The input name `inputs` is deprecated. Please make sure to use `input_features` instead.
+  warnings.warn(
+You have passed task=transcribe, but also have set `forced_decoder_ids` to [[1, None], [2, 50360]] which creates a conflict. `forced_decoder_ids` will be ignored in favor of task=transcribe.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+baseline_provided: CER 0.2421; SIM 0.8303; failures 0
+baseline_fresh: CER 0.2866; SIM 0.796; failures 1
+control: CER 0.1616; SIM 0.8078; failures 1
+rewrite: CER 0.0535; SIM 0.8455; failures 0
+timing: CER 0.1279; SIM 0.8446; failures 0
+combined: CER 0.0571; SIM 0.8421; failures 0
+fast: CER 0.0636; SIM 0.841; failures 0
+control_loudness: CER 0.121; SIM 0.8435; failures 0
+Recorded Task 2: CER 0.1616, SIM 0.8078, hard CER 0.0912.
+Other-category guards: FAIL — inspect validation results
+Validation complete. Inspect reports/postmidterm/comparison.json and writing_notes.md. Evaluation remains unrun.
+Still running (30s); log: reports/postmidterm/eval_worker.log
+Still running (60s); log: reports/postmidterm/eval_worker.log
+Still running (90s); log: reports/postmidterm/eval_worker.log
+Still running (120s); log: reports/postmidterm/eval_worker.log
+Still running (150s); log: reports/postmidterm/eval_worker.log
+Still running (180s); log: reports/postmidterm/eval_worker.log
+Still running (210s); log: reports/postmidterm/eval_worker.log
+Still running (240s); log: reports/postmidterm/eval_worker.log
+Still running (270s); log: reports/postmidterm/eval_worker.log
+Still running (300s); log: reports/postmidterm/eval_worker.log
+Still running (330s); log: reports/postmidterm/eval_worker.log
+Still running (360s); log: reports/postmidterm/eval_worker.log
+Still running (390s); log: reports/postmidterm/eval_worker.log
+Still running (420s); log: reports/postmidterm/eval_worker.log
+Still running (450s); log: reports/postmidterm/eval_worker.log
+Still running (480s); log: reports/postmidterm/eval_worker.log
+Still running (510s); log: reports/postmidterm/eval_worker.log
+Still running (540s); log: reports/postmidterm/eval_worker.log
+Still running (570s); log: reports/postmidterm/eval_worker.log
+Still running (600s); log: reports/postmidterm/eval_worker.log
+Still running (630s); log: reports/postmidterm/eval_worker.log
+Still running (660s); log: reports/postmidterm/eval_worker.log
+Still running (690s); log: reports/postmidterm/eval_worker.log
+Still running (720s); log: reports/postmidterm/eval_worker.log
+Still running (750s); log: reports/postmidterm/eval_worker.log

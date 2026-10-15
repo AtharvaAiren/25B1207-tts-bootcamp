@@ -1,0 +1,21 @@
+{
+  "metrics_version": "1.0",
+  "recognizer": "openai/whisper-large-v3-turbo",
+  "speaker_model": "speechbrain/spkrec-ecapa-voxceleb",
+  "n_items": 24,
+  "failed": 0,
+  "cer": 0.0636,
+  "sim": 0.841,
+  "cer_by_category": {
+    "hard": 0.0999,
+    "hindi": 0.0319,
+    "hinglish": 0.058,
+    "long": 0.0467
+  },
+  "sim_by_category": {
+    "hard": 0.847,
+    "hindi": 0.8389,
+    "hinglish": 0.797,
+    "long": 0.8982
+  }
+}

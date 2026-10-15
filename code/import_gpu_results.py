@@ -41,6 +41,18 @@ def main():
             if name in names and (KIT / name).exists() and source.read(name) != (KIT / name).read_bytes():
                 raise ValueError(f"Source differs: {name}; import matching evidence deliberately")
         staged = {"results.json": source.read("results.json")}
+        # Task 4 explicitly requires both same-session timing files in code/.
+        if measured.get("task4", {}).get("speedup") is not None:
+            timing = {}
+            for label in ("baseline", "fast"):
+                name = f"code/{label}_timing.json"
+                timing[label] = json.loads(source.read(name))
+                staged[name] = source.read(name)
+            if timing["baseline"]["session"] != timing["fast"]["session"] or any(t["n_items"] != 24 or t["seed"] != measured["seed"] for t in timing.values()):
+                raise ValueError("Task 4 timing files differ in session/count/seed")
+            ratio = timing["baseline"]["total_synth_s"] / timing["fast"]["total_synth_s"]
+            if abs(ratio - measured["task4"]["speedup"]) > 1e-9:
+                raise ValueError("Task 4 speedup differs from its timing files")
         for split, folders in (("val", ("val_control", "val_idea")),
                               ("eval", ("t2_norm", "t3_idea", "t4_fast"))):
             with (KIT / "data" / f"{split}_items.csv").open(newline="") as stream:
